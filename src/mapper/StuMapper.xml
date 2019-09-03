@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.StuDao">
+<insert id="addStu" parameterType="entity.Stu">
+ 	insert into stu(studentno,username,sex,age,classno) values(#{studentno},#{username},#{sex},#{age},#{classno})
+</insert>
+<select id="isStu" parameterType="String" resultType="int">
+		select count(1) from stu where studentno=#{studentno}
+</select>
+<select id="getStubyclassno" parameterType="String" resultType="int">
+		select * from stu where classno=#{classno}
+</select>
+
+<select id="getStus"  resultType="entity.Stu">
+		select * from stu
+</select>
+
+<update id="updateStu" parameterType="entity.Stu">
+		update stu set username=#{username}, sex=#{sex},age=#{age},classno=#{classno} where studentno=#{studentno}
+</update>
+<select id="getStubystudentno" parameterType="String" resultType="int">
+		select * from stu where studentno=#{studentno}
+</select>
+
+<delete id="delStu" parameterType="String">
+         delete from stu where studentno=#{studentno}
+</delete>
+</mapper>
